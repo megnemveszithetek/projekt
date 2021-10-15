@@ -1,0 +1,18 @@
+.jobbra {
+    float: right;
+}
+#bejelentablak {
+    visibility: hidden;
+    position: absolute;
+    z-index: 3;
+}
+
+#bejelentablak div {
+    cursor: pointer;
+    text-align: center;
+}
+#regisztracio {
+    visibility: hidden;
+    position: absolute;
+    z-index: 3;
+}
