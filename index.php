@@ -63,6 +63,7 @@ include './csatolt.php';
                     <td><input type="button" id="regisztral" onclick="regisztracio()" value="Regisztráció"></td>
                     <td><input type="button" value="Mégse" onclick="zar('regisztracio')"></td>
                 </tr>
+                <!--        dasdasgsdfhsiodfhgaéliud                         -->
             </table>
         </div>
     <script src="./js.js" type="text/javascript"></script>
