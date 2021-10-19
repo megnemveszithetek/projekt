@@ -51,10 +51,11 @@ function regisztracio(){
       formData.append('pass', document.getElementById('pass1').value);
       formData.append('szuldatum', document.getElementById('szuldatum').value);
       kuld("./felhasznalo.php", formData, "kivagyok");
-      document.getElementById('user').value = "";
+      document.getElementById('vnev').value = "";
+      document.getElementById('knev').value = "";
       document.getElementById('email').value = "";
-      document.getElementById('passwd1').value = "";
-      document.getElementById('passwd2').value = "";
+      document.getElementById('pass1').value = "";
+      document.getElementById('pass2').value = "";
       zar('regisztracio');
   } else {
       alert("Nem egyezik a két jelszó!");
