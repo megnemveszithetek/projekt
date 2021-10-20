@@ -8,7 +8,7 @@ include './csatolt.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="cs.css" rel="stylesheet" type="text/css"/>
-    <title>Document</title>
+    <title>Majd kitaláljuk</title>
 </head>
 <body onload="ablakok()" onresize="ablakok()">
     <nav>
@@ -17,6 +17,7 @@ include './csatolt.php';
             <li id="kivagyok"  onclick="bej()">Bejelentkezés</li>
         </ul>
     </nav>
+    <!--           Bejelentkezés            -->
         <div id="bejelentablak">
             <table>
                 <tr>
@@ -33,6 +34,7 @@ include './csatolt.php';
                 </tr>
             </table>
         </div>
+    <!--           Regisztráció            -->
         <div id="regisztracio">
             <table>
                 <tr>
