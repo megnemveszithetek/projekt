@@ -8,7 +8,7 @@ if (mysqli_num_rows($eredmeny) == 1){
     $_SESSION['id']=$rekord['id'];
     $_SESSION['vnev']=$rekord['vnev'];
     $_SESSION['knev']=$rekord['knev'];
-    echo $_SESSION['vnev'], $_SESSION['knev'];
+    echo $_SESSION['vnev'];
 } else {
     echo "Bejelentkezés";
 }
