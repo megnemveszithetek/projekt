@@ -22,7 +22,7 @@ include './csatolt.php';
             <table>
                 <tr>
                     <td>E-mail cím:</td>
-                    <td><input type="text" id="email" onkeyup="ellenoriz()"></td>
+                    <td><input type="text" id="bejemail" onkeyup="ellenoriz()"></td>
                 </tr>
                 <tr>
                     <td>Jelszó:</td>
@@ -47,7 +47,7 @@ include './csatolt.php';
                 </tr>
                 <tr>
                     <td>E-mail cím:</td>
-                    <td><input type="text" id="email"></td>
+                    <td><input type="text" id="regemail"></td>
                 </tr>
                 <tr>
                     <td>Jelszó</td>
@@ -62,11 +62,34 @@ include './csatolt.php';
                     <td><input type="date" id="szuldatum"></td>
                 </tr>
                 <tr>
+                    <td>Neme: </td>
+                    <td><select id="neme" onchange="openList()">
+                        <option value="no" selected>Nő</option>
+                        <option value="ferfi">Férfi</option>
+                        <option value="egyeb">Egyéb</option>
+                    </select>
+                    </td>
+                </tr>
+                <tr>
                     <td><input type="button" id="regisztral" onclick="regisztracio()" value="Regisztráció"></td>
                     <td><input type="button" value="Mégse" onclick="zar('regisztracio')"></td>
                 </tr>
             </table>
         </div>
-    <script src="./js.js" type="text/javascript"></script>
+        <select id="egyeblista">
+                        <option value="1">Goblin</option>
+                        <option value="2">Troll</option>
+                        <option value="3">Tünde</option>
+                    </select>
+    <script src="./js.js" type="text/javascript">
+
+function openList(){
+  if(egyeblista.value=="egyeb"){
+    nyit("egyeblista")
+  }
+  else{
+    zar("egyeblista")
+  }
+}</script>
 </body>
 </html>

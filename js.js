@@ -1,3 +1,17 @@
+
+function egyeblistaopen(){
+  document.getElementById("neme").addEventListener("change", openList,false)
+  alert("asdadasf")
+}
+function openList(){
+  if(egyeblista.value=="egyeb"){
+    nyit("egyeblista")
+  }
+  else{
+    zar("egyeblista")
+  }
+}
+window.addEventListener("load", egyeblistaopen,false)
 function ablakok() {
   kozepre("bejelentablak");
   //kozepre("kijelentablak");
@@ -30,10 +44,9 @@ function bej() {
   nyit("bejelentablak");
 }
 
-
 function bejelentkezes() {
   var formData = new FormData();
-  formData.append('email', document.getElementById('email').value);
+  formData.append('email', document.getElementById('bejemail').value);
   formData.append('pass', document.getElementById('jelszo').value);
   kuld("./bejelentkezes.php", formData, "kivagyok");
   document.getElementById('fnev').value = "";
@@ -47,7 +60,7 @@ function regisztracio(){
       var formData = new FormData();
       formData.append('vnev', document.getElementById('vnev').value);
       formData.append('knev', document.getElementById('knev').value);
-      formData.append('email', document.getElementById('email').value);
+      formData.append('email', document.getElementById('regemail').value);
       formData.append('pass', document.getElementById('pass1').value);
       formData.append('szuldatum', document.getElementById('szuldatum').value);
       kuld("./felhasznalo.php", formData, "kivagyok");
