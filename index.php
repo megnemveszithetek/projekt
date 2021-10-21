@@ -64,8 +64,8 @@ include './csatolt.php';
                 <tr>
                     <td>Neme: </td>
                     <td><select id="neme">
-                        <option value="no" selected>Nő</option>
-                        <option value="ferfi">Férfi</option>
+                        <option value="0" selected>Nő</option>
+                        <option value="1">Férfi</option>
                     </select></td>
                 </tr>
                 <tr>
@@ -82,12 +82,3 @@ include './csatolt.php';
 </script>
 </body>
 </html>
-<!--     mysqli_query($kapcsolat, $sqlmondat);
-    $sqlmondat="select * from felhasznalo where fnev=\"".$_POST['fnev']."\"";
-    $eredmeny = mysqli_query($kapcsolat, $sqlmondat);
-    $rekord= mysqli_fetch_assoc($eredmeny);
-    $_SESSION['id']=$rekord['id'];
-    $_SESSION['vnev']=$vnev;
-    $_SESSION['knev']=$knev;
-    echo $vnev+$knev;
--->

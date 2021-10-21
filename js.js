@@ -1,5 +1,3 @@
-
-
 function ablakok() {
   kozepre("bejelentablak");
   //kozepre("kijelentablak");
@@ -36,17 +34,33 @@ function megse(){
   zar("regisztracio")
   zar("bejelentablak")
 }
+
+function ellenoriz() {
+  if ((document.getElementById('bejemail').value != "") && (document.getElementById('jelszo').value != "")) {
+      document.getElementById('bejelgomb').disabled = false;
+  } else {
+      document.getElementById('bejelgomb').disabled = true;
+  }
+}
+function ellenorzes(mit, mivel, gomb) {
+  if ((document.getElementById(mit).value != "") && (document.getElementById('jelszo').value != "")) {
+      document.getElementById(gomb).disabled = false;
+  } else {
+      document.getElementById(gomb).disabled = true;
+  }
+}
 function bejelentkezes() {
   var formData = new FormData();
   formData.append('email', document.getElementById('bejemail').value);
   formData.append('pass', document.getElementById('jelszo').value);
-  kuld("./bejelentkezes.php", formData, "kivagyok");
-  document.getElementById('fnev').value = "";
+  kuld("./login.php", formData, "kivagyok");
+  document.getElementById('bejemail').value = "";
   document.getElementById('jelszo').value = "";
   zar('bejelentablak');
 
 }
 function kuld(cim, mit, hova) {
+  alert('ala');
     var httprequest = new XMLHttpRequest();
     httprequest.open("POST", cim, true);
     httprequest.onreadystatechange = function () {
@@ -73,17 +87,9 @@ function regisztracio(){
       formData.append('email', document.getElementById('regemail').value);
       formData.append('pass', document.getElementById('pass').value);
       formData.append('szuldatum', document.getElementById('szuldatum').value);
-      var no =document.getElementById("neme").value
-      var neme=0;
-      if(no =="no"){
-       neme=0
-       }else {
-        neme=1;
-      }
-      alert (neme);
-      formData.append(neme);
+      formData.append('neme', document.getElementById('neme').value);
       formData.append('magas', document.getElementById('magas').value);
-      kuld("./adatok.php", formData, "kivagyok");
+      kuld("./singin.php", formData, "kivagyok");
       document.getElementById('vnev').value = "";
       document.getElementById('knev').value = "";
       document.getElementById('regemail').value = "";
@@ -92,7 +98,6 @@ function regisztracio(){
       document.getElementById('szuldatum').value = "";
       document.getElementById('neme').value = "";
       document.getElementById('magas').value = "";
-      
       zar('regisztracio');
   } else {
       alert("Nem egyezik a két jelszó!");
