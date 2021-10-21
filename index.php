@@ -30,7 +30,7 @@ include './csatolt.php';
                 </tr>
                 <tr>
                     <td><input type="button" id="bejelgomb" onclick="bejelentkezes()" value="Bejelentkezés" disabled></td>
-                    <td><input type="button" value="Mégse" onclick="zar('bejelentablak')"></td>
+                    <td><input type="button" value="Mégse" onclick="megse()"></td>
                 </tr>
             </table>
         </div>
@@ -63,20 +63,18 @@ include './csatolt.php';
                 </tr>
                 <tr>
                     <td>Neme: </td>
-                    <td><select id="neme" onchange="opneList()">
+                    <td><select id="neme">
                         <option value="no" selected>Nő</option>
                         <option value="ferfi">Férfi</option>
-                        <option value="egyeb">Egyéb</option>
-                    </select>
-                    <select id="egyeblista" >
-                        <option value="1">Goblin</option>
-                        <option value="2">Troll</option>
-                        <option value="3">Tünde</option>
                     </select></td>
                 </tr>
                 <tr>
+                    <td>Magasság</td>
+                    <td><input type="number" id="magas"></td>
+                </tr>
+                <tr>
                     <td><input type="button" id="regisztral" onclick="regisztracio()" value="Regisztráció"></td>
-                    <td><input type="button" value="Mégse" onclick="zar('regisztracio')"></td>
+                    <td><input type="button" value="Mégse" onclick="megse()"></td>
                 </tr>
             </table>
         </div>
@@ -84,3 +82,12 @@ include './csatolt.php';
 </script>
 </body>
 </html>
+<!--     mysqli_query($kapcsolat, $sqlmondat);
+    $sqlmondat="select * from felhasznalo where fnev=\"".$_POST['fnev']."\"";
+    $eredmeny = mysqli_query($kapcsolat, $sqlmondat);
+    $rekord= mysqli_fetch_assoc($eredmeny);
+    $_SESSION['id']=$rekord['id'];
+    $_SESSION['vnev']=$vnev;
+    $_SESSION['knev']=$knev;
+    echo $vnev+$knev;
+-->

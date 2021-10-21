@@ -1,12 +1,4 @@
-function openList(){
-  if(document.getElementById("neme").value=="egyeb"){
-    nyit("egyeblista")
-    alert("asd")
-  }
-  else{
-    zar("egyeblista")
-  }
-}
+
 
 function ablakok() {
   kozepre("bejelentablak");
@@ -40,6 +32,10 @@ function bej() {
   nyit("bejelentablak");
 }
 
+function megse(){
+  zar("regisztracio")
+  zar("bejelentablak")
+}
 function bejelentkezes() {
   var formData = new FormData();
   formData.append('email', document.getElementById('bejemail').value);
@@ -50,6 +46,24 @@ function bejelentkezes() {
   zar('bejelentablak');
 
 }
+function kuld(cim, mit, hova) {
+    var httprequest = new XMLHttpRequest();
+    httprequest.open("POST", cim, true);
+    httprequest.onreadystatechange = function () {
+        if (httprequest.readyState == 4 && httprequest.status == 200) {
+            document.getElementById(hova).innerHTML = httprequest.responseText;
+            if (document.getElementById('kivagyok').innerHTML != "Bejelentkezés") {
+                document.getElementById('kivagyok').removeAttribute("onclick");
+                document.getElementById('kivagyok').onclick = function () {
+                    nyit('kijelentablak');
+                }
+            } else {
+                alert("Elszúrtad...");
+            }
+        }
+    }
+    httprequest.send(mit);
+}
 
 function regisztracio(){
   if (document.getElementById('pass').value == document.getElementById('pass2').value){
@@ -57,14 +71,26 @@ function regisztracio(){
       formData.append('vnev', document.getElementById('vnev').value);
       formData.append('knev', document.getElementById('knev').value);
       formData.append('email', document.getElementById('regemail').value);
-      formData.append('pass', document.getElementById('pass1').value);
+      formData.append('pass', document.getElementById('pass').value);
       formData.append('szuldatum', document.getElementById('szuldatum').value);
-      kuld("./felhasznalo.php", formData, "kivagyok");
+      var valami=0
+      if(document.getElementByID("neme").value=="no"){
+       valami=0
+       }else {
+        valami=1;
+      }
+      formData.append(valami);
+      formData.append('magas', document.getElementById('magas').value);
+      kuld("./adatok.php", formData, "kivagyok");
       document.getElementById('vnev').value = "";
       document.getElementById('knev').value = "";
-      document.getElementById('email').value = "";
-      document.getElementById('pass1').value = "";
+      document.getElementById('regemail').value = "";
+      document.getElementById('pass').value = "";
       document.getElementById('pass2').value = "";
+      document.getElementById('szuldatum').value = "";
+      document.getElementById('neme').value = "";
+      document.getElementById('magas').value = "";
+      
       zar('regisztracio');
   } else {
       alert("Nem egyezik a két jelszó!");
