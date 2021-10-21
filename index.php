@@ -63,12 +63,12 @@ include './csatolt.php';
                 </tr>
                 <tr>
                     <td>Neme: </td>
-                    <td><select id="neme" name="1">
+                    <td><select id="neme" onchange="opneList()">
                         <option value="no" selected>Nő</option>
                         <option value="ferfi">Férfi</option>
                         <option value="egyeb">Egyéb</option>
                     </select>
-                    <select id="egyeblista" name="2">
+                    <select id="egyeblista" >
                         <option value="1">Goblin</option>
                         <option value="2">Troll</option>
                         <option value="3">Tünde</option>

@@ -1,6 +1,7 @@
 function openList(){
   if(document.getElementById("neme").value=="egyeb"){
     nyit("egyeblista")
+    alert("asd")
   }
   else{
     zar("egyeblista")
