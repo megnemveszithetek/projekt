@@ -42,7 +42,7 @@ include './csatolt.php';
                     <td><input type="text" id="vnev"></td>
                 </tr>
                 <tr>
-                    <td>Kerszt név:</td>
+                    <td>Kereszt név:</td>
                     <td><input type="text" id="knev"></td>
                 </tr>
                 <tr>
@@ -50,11 +50,11 @@ include './csatolt.php';
                     <td><input type="text" id="regemail"></td>
                 </tr>
                 <tr>
-                    <td>Jelszó</td>
+                    <td>Jelszó: </td>
                     <td><input type="password" id="pass"></td>
                 </tr>
                 <tr>
-                    <td>Jelszó újra</td>
+                    <td>Jelszó újra:</td>
                     <td><input type="password" id="pass2"></td>
                 </tr>
                 <tr>
@@ -69,7 +69,7 @@ include './csatolt.php';
                     </select></td>
                 </tr>
                 <tr>
-                    <td>Magasság</td>
+                    <td>Magasság: </td>
                     <td><input type="number" id="magas"></td>
                 </tr>
                 <tr>

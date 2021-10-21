@@ -55,7 +55,7 @@ function kuld(cim, mit, hova) {
             if (document.getElementById('kivagyok').innerHTML != "Bejelentkezés") {
                 document.getElementById('kivagyok').removeAttribute("onclick");
                 document.getElementById('kivagyok').onclick = function () {
-                    nyit('kijelentablak');
+                    //nyit('kijelentablak');
                 }
             } else {
                 alert("Elszúrtad...");
@@ -73,13 +73,14 @@ function regisztracio(){
       formData.append('email', document.getElementById('regemail').value);
       formData.append('pass', document.getElementById('pass').value);
       formData.append('szuldatum', document.getElementById('szuldatum').value);
-      var valami=0
-      if(document.getElementByID("neme").value=="no"){
-       valami=0
+      neme=0;
+      if(document.getElementByID('neme').value=="no"){
+       neme=0
        }else {
-        valami=1;
+        neme=1;
       }
-      formData.append(valami);
+      alert (neme);
+      formData.append('neme');
       formData.append('magas', document.getElementById('magas').value);
       kuld("./adatok.php", formData, "kivagyok");
       document.getElementById('vnev').value = "";
