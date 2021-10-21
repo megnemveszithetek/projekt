@@ -68,7 +68,11 @@ include './csatolt.php';
                         <option value="ferfi">Férfi</option>
                         <option value="egyeb">Egyéb</option>
                     </select>
-                    </td>
+                    <select id="egyeblista">
+                        <option value="1">Goblin</option>
+                        <option value="2">Troll</option>
+                        <option value="3">Tünde</option>
+                    </select></td>
                 </tr>
                 <tr>
                     <td><input type="button" id="regisztral" onclick="regisztracio()" value="Regisztráció"></td>
@@ -76,20 +80,7 @@ include './csatolt.php';
                 </tr>
             </table>
         </div>
-        <select id="egyeblista">
-                        <option value="1">Goblin</option>
-                        <option value="2">Troll</option>
-                        <option value="3">Tünde</option>
-                    </select>
     <script src="./js.js" type="text/javascript">
-
-function openList(){
-  if(egyeblista.value=="egyeb"){
-    nyit("egyeblista")
-  }
-  else{
-    zar("egyeblista")
-  }
-}</script>
+</script>
 </body>
 </html>
