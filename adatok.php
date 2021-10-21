@@ -5,7 +5,7 @@ $knev=$_POST['knev'];
 $email=$_POST['email'];
 $jelszo=$_POST['pass'];
 $szuldatum=$_POST['szuldatum'];
-$neme=$_POST['neme'];
+$neme=$_POST[neme];
 $magas=$_POST['magas'];
 $sqlmondat="select * from felhasznalo where email=\"".$email."\"";
 $eredmeny = mysqli_query($kapcsolat, $sqlmondat);

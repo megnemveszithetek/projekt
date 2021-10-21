@@ -73,14 +73,15 @@ function regisztracio(){
       formData.append('email', document.getElementById('regemail').value);
       formData.append('pass', document.getElementById('pass').value);
       formData.append('szuldatum', document.getElementById('szuldatum').value);
-      neme=0;
-      if(document.getElementByID('neme').value=="no"){
+      var no =document.getElementById("neme").value
+      var neme=0;
+      if(no =="no"){
        neme=0
        }else {
         neme=1;
       }
       alert (neme);
-      formData.append('neme');
+      formData.append(neme);
       formData.append('magas', document.getElementById('magas').value);
       kuld("./adatok.php", formData, "kivagyok");
       document.getElementById('vnev').value = "";
