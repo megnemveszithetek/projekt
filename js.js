@@ -1,17 +1,12 @@
-
-function egyeblistaopen(){
-  document.getElementById("neme").addEventListener("change", openList,false)
-  alert("asdadasf")
-}
 function openList(){
-  if(egyeblista.value=="egyeb"){
+  if(document.getElementById("neme").value=="egyeb"){
     nyit("egyeblista")
   }
   else{
     zar("egyeblista")
   }
 }
-window.addEventListener("load", egyeblistaopen,false)
+
 function ablakok() {
   kozepre("bejelentablak");
   //kozepre("kijelentablak");
