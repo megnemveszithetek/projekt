@@ -57,6 +57,7 @@ function bejelentkezes() {
   document.getElementById('bejemail').value = "";
   document.getElementById('jelszo').value = "";
   zar("bejelentablak")
+  zar("hibasbej");
 
 }
 function kuld(cim, mit, hova) {
@@ -70,10 +71,11 @@ function kuld(cim, mit, hova) {
                 document.getElementById('kivagyok').onclick = function () {
                     //nyit('kijelentablak');
                     zar("bejelentablak")
+                    
                 }
             } else {
               nyit("bejelentablak");
-              document.getElementById("hibasbej").style.visibility = "visible";
+              nyit("hibasbej");
             }
         }
     }
