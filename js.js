@@ -56,11 +56,10 @@ function bejelentkezes() {
   kuld("./login.php", formData, "kivagyok");
   document.getElementById('bejemail').value = "";
   document.getElementById('jelszo').value = "";
-  zar('bejelentablak');
+  zar("bejelentablak")
 
 }
 function kuld(cim, mit, hova) {
-  alert('ala');
     var httprequest = new XMLHttpRequest();
     httprequest.open("POST", cim, true);
     httprequest.onreadystatechange = function () {
@@ -70,9 +69,11 @@ function kuld(cim, mit, hova) {
                 document.getElementById('kivagyok').removeAttribute("onclick");
                 document.getElementById('kivagyok').onclick = function () {
                     //nyit('kijelentablak');
+                    zar("bejelentablak")
                 }
             } else {
-                alert("Elszúrtad...");
+              nyit("bejelentablak");
+              document.getElementById("hibasbej").style.visibility = "visible";
             }
         }
     }

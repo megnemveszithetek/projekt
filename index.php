@@ -21,6 +21,9 @@ include './csatolt.php';
         <div id="bejelentablak">
             <table>
                 <tr>
+                    <td colspan="2" id="hibasbej"> Hibás email vagy jelszó</td>
+                </tr>
+                <tr>
                     <td>E-mail cím:</td>
                     <td><input type="text" id="bejemail" onkeyup="ellenoriz()"></td>
                 </tr>

@@ -16,3 +16,6 @@
     position: absolute;
     z-index: 3;
 }
+#hibasbej{
+    visibility: hidden;
+}
