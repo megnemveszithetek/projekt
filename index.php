@@ -11,7 +11,7 @@ include './csatolt.php';
     <title>Majd kitaláljuk</title>
 </head>
 <body onload="ablakok()" onresize="ablakok()">
-    <nav>
+    <nav id="bejreg">
         <ul id="menu" class="jobbra">               
             <li id="regisztral"  onclick="reg()">Regisztráció</li>
             <li id="kivagyok"  onclick="bej()">Bejelentkezés</li>
@@ -80,6 +80,14 @@ include './csatolt.php';
                     <td><input type="button" value="Mégse" onclick="megse()"></td>
                 </tr>
             </table>
+        </div>
+        <div id="logout" onclick="nyit('kijelentablak')"class="jobbra">
+            Kiejelentkezés
+        </div>
+        <div id="kijelentablak">
+             Biztosan ki akar jelentkezni?<br>
+             <input type="button" onclick="kijelentkezes()" value="Kilépés">
+             <input type="button" value="Mégse" onclick="zar('kijelentablak')">
         </div>
     <script src="./js.js" type="text/javascript">
 </script>

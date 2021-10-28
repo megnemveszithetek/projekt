@@ -19,3 +19,16 @@
 #hibasbej{
     visibility: hidden;
 }
+#bejreg{
+    visibility: visible;
+}
+#logout{
+    visibility: hidden;
+    cursor: pointer;
+    z-index: 3;
+}
+#kijelentablak{
+    visibility: hidden;
+    position: absolute;
+    z-index: 3;
+}

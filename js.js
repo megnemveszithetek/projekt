@@ -1,7 +1,7 @@
 function ablakok() {
   kozepre("bejelentablak");
-  //kozepre("kijelentablak");
   kozepre("regisztracio");
+  kozepre("kijelentablak");
   //kozepre("jelszocsere");
 }
 
@@ -33,6 +33,7 @@ function bej() {
 function megse(){
   zar("regisztracio")
   zar("bejelentablak")
+  zar("hibasbej")
 }
 
 function ellenoriz() {
@@ -56,9 +57,26 @@ function bejelentkezes() {
   kuld("./login.php", formData, "kivagyok");
   document.getElementById('bejemail').value = "";
   document.getElementById('jelszo').value = "";
-  zar("bejelentablak")
+  zar("bejelentablak");
   zar("hibasbej");
+  zar("bejreg");
 
+}
+function kijelentkezes(){
+  var httprequest = new XMLHttpRequest();
+  httprequest.open("GET", "./logout.php", true);
+  httprequest.onreadystatechange = function (){
+    alert("nem")
+      if (httprequest.readyState == 4 && httprequest.status == 200){
+          document.getElementById('kivagyok').innerHTML="Bejelentkezés";
+          document.getElementById('kivagyok').removeAttribute("onclick");
+          document.getElementById('kivagyok').onclick = function () {
+                  nyit('bejelentablak');
+              }
+          zar('kijelentablak');
+      }
+  }
+  httprequest.send();
 }
 function kuld(cim, mit, hova) {
     var httprequest = new XMLHttpRequest();
@@ -69,17 +87,19 @@ function kuld(cim, mit, hova) {
             if (document.getElementById('kivagyok').innerHTML != "Bejelentkezés") {
                 document.getElementById('kivagyok').removeAttribute("onclick");
                 document.getElementById('kivagyok').onclick = function () {
-                    //nyit('kijelentablak');
+                    nyit('logout');
                     zar("bejelentablak")
                     
                 }
             } else {
               nyit("bejelentablak");
               nyit("hibasbej");
+              nyit("bejreg");
             }
         }
     }
     httprequest.send(mit);
+    nyit('logout');
 }
 
 function regisztracio(){
