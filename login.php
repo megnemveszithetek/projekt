@@ -10,10 +10,9 @@ if (mysqli_num_rows($eredmeny) == 1){
     $_SESSION['id']=$rekord['id'];
     $_SESSION['vnev']=$rekord['vnev'];
     $_SESSION['knev']=$rekord['knev'];
-    //$_SESSION['loggedin']=true;
-    echo ("Üdv ".$_SESSION['vnev']." ".$_SESSION['knev']." sikeresen bejelentkeztél.");
+    echo "<ul id='menu' class='jobbra'><li onclick=\"nyit('kijelentablak')\">".$_SESSION['vnev'].' '.$_SESSION['knev']."</li></ul>";
 } else {
-    echo "Bejelentkezés";
+    echo $sqlmondat;
 }
 
 ?>

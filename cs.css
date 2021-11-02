@@ -1,38 +1,53 @@
 .jobbra {
-    float: right;
+  float: right;
 }
 #bejelentablak {
-    visibility: hidden;
-    position: absolute;
-    z-index: 3;
+  visibility: hidden;
+  position: absolute;
+  z-index: 3;
 }
 
 #bejelentablak div {
-    cursor: pointer;
-    text-align: center;
+  cursor: pointer;
+  text-align: center;
 }
 #regisztracio {
-    visibility: hidden;
-    position: absolute;
-    z-index: 3;
+  visibility: hidden;
+  position: absolute;
+  z-index: 3;
 }
-#hibasbej{
-    visibility: hidden;
+#hibasbej {
+  visibility: hidden;
 }
-#bejreg{
-    visibility: visible;
+#bejreg {
+  visibility: visible;
 }
-#logout{
-    visibility: hidden;
-    cursor: pointer;
-    z-index: 3;
+#logout {
+  visibility: hidden;
+  cursor: pointer;
+  z-index: 3;
 }
-#kijelentablak{
-    visibility: hidden;
-    position: absolute;
-    z-index: 3;
+#kijelentablak {
+  visibility: hidden;
+  position: absolute;
+  z-index: 3;
 }
-html{
-    background-color: #2e2e2e;
-    color: white;
+html {
+  background-color: #2e2e2e;
+  color: white;
+}
+
+nav li {
+  cursor: pointer;
+}
+#regisztral:hover {
+  color: red;
+  font-weight: bold;
+}
+#kivagyok:hover {
+  color: red;
+  font-weight: bold;
+}
+nav ul {
+  list-style-type: none;
 }

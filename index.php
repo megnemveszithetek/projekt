@@ -17,6 +17,7 @@ include './csatolt.php';
             <li id="kivagyok"  onclick="bej()">Bejelentkezés</li>
         </ul>
     </nav>
+    <div id="felhasznalo"></div>
     <!--           Bejelentkezés            -->
         <div id="bejelentablak">
             <table>
@@ -76,13 +77,10 @@ include './csatolt.php';
                     <td><input type="number" id="magas"></td>
                 </tr>
                 <tr>
-                    <td><input type="button" id="regisztral" onclick="regisztracio()" value="Regisztráció"></td>
+                    <td><input type="button" id="regisztralas" onclick="regisztracio()" value="Regisztráció"></td>
                     <td><input type="button" value="Mégse" onclick="megse()"></td>
                 </tr>
             </table>
-        </div>
-        <div id="logout" onclick="nyit('kijelentablak')"class="jobbra">
-            Kiejelentkezés
         </div>
         <div id="kijelentablak">
              Biztosan ki akar jelentkezni?<br>

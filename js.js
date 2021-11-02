@@ -54,28 +54,22 @@ function bejelentkezes() {
   var formData = new FormData();
   formData.append('email', document.getElementById('bejemail').value);
   formData.append('pass', document.getElementById('jelszo').value);
-  kuld("./login.php", formData, "kivagyok");
+  kuld("./login.php", formData, "bejreg");
   document.getElementById('bejemail').value = "";
   document.getElementById('jelszo').value = "";
   zar("bejelentablak");
   zar("hibasbej");
-  zar("bejreg");
 
 }
 function kijelentkezes(){
   var httprequest = new XMLHttpRequest();
   httprequest.open("GET", "./logout.php", true);
   httprequest.onreadystatechange = function (){
-    alert("nem")
       if (httprequest.readyState == 4 && httprequest.status == 200){
-          document.getElementById('kivagyok').innerHTML="Bejelentkezés";
-          document.getElementById('kivagyok').removeAttribute("onclick");
-          document.getElementById('kivagyok').onclick = function () {
-                  nyit('bejelentablak');
+          document.getElementById('bejreg').innerHTML="<ul id='menu' class='jobbra'><li id='regisztral'  onclick='reg()'>Regisztráció</li><li id='kivagyok'  onclick='bej()'>Bejelentkezés</li></ul>";
               }
           zar('kijelentablak');
       }
-  }
   httprequest.send();
 }
 function kuld(cim, mit, hova) {
@@ -84,22 +78,9 @@ function kuld(cim, mit, hova) {
     httprequest.onreadystatechange = function () {
         if (httprequest.readyState == 4 && httprequest.status == 200) {
             document.getElementById(hova).innerHTML = httprequest.responseText;
-            if (document.getElementById('kivagyok').innerHTML != "Bejelentkezés") {
-                document.getElementById('kivagyok').removeAttribute("onclick");
-                document.getElementById('kivagyok').onclick = function () {
-                    nyit('logout');
-                    zar("bejelentablak")
-                    
-                }
-            } else {
-              nyit("bejelentablak");
-              nyit("hibasbej");
-              nyit("bejreg");
-            }
         }
     }
     httprequest.send(mit);
-    nyit('logout');
 }
 
 function regisztracio(){
@@ -112,7 +93,7 @@ function regisztracio(){
       formData.append('szuldatum', document.getElementById('szuldatum').value);
       formData.append('neme', document.getElementById('neme').value);
       formData.append('magas', document.getElementById('magas').value);
-      kuld("./singin.php", formData, "kivagyok");
+      kuld("./singin.php", formData, "regisztral");
       document.getElementById('vnev').value = "";
       document.getElementById('knev').value = "";
       document.getElementById('regemail').value = "";
