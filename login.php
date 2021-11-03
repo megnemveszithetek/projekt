@@ -12,7 +12,7 @@ if (mysqli_num_rows($eredmeny) == 1){
     $_SESSION['knev']=$rekord['knev'];
     echo "<ul id='menu' class='jobbra'><li onclick=\"nyit('kijelentablak')\">".$_SESSION['vnev'].' '.$_SESSION['knev']."</li></ul>";
 } else {
-    echo $sqlmondat;
+    echo "Hibás bejelntkezés";
 }
 
 ?>

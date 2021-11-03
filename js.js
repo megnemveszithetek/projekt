@@ -30,7 +30,7 @@ function bej() {
   nyit("bejelentablak");
 }
 
-function megse(){
+function megse() {
   zar("regisztracio")
   zar("bejelentablak")
   zar("hibasbej")
@@ -38,16 +38,16 @@ function megse(){
 
 function ellenoriz() {
   if ((document.getElementById('bejemail').value != "") && (document.getElementById('jelszo').value != "")) {
-      document.getElementById('bejelgomb').disabled = false;
+    document.getElementById('bejelgomb').disabled = false;
   } else {
-      document.getElementById('bejelgomb').disabled = true;
+    document.getElementById('bejelgomb').disabled = true;
   }
 }
 function ellenorzes(mit, mivel, gomb) {
   if ((document.getElementById(mit).value != "") && (document.getElementById('jelszo').value != "")) {
-      document.getElementById(gomb).disabled = false;
+    document.getElementById(gomb).disabled = false;
   } else {
-      document.getElementById(gomb).disabled = true;
+    document.getElementById(gomb).disabled = true;
   }
 }
 function bejelentkezes() {
@@ -61,49 +61,49 @@ function bejelentkezes() {
   zar("hibasbej");
 
 }
-function kijelentkezes(){
+function kijelentkezes() {
   var httprequest = new XMLHttpRequest();
-  httprequest.open("GET", "./logout.php", true);
-  httprequest.onreadystatechange = function (){
-      if (httprequest.readyState == 4 && httprequest.status == 200){
-          document.getElementById('bejreg').innerHTML="<ul id='menu' class='jobbra'><li id='regisztral'  onclick='reg()'>Regisztráció</li><li id='kivagyok'  onclick='bej()'>Bejelentkezés</li></ul>";
-              }
-          zar('kijelentablak');
-      }
+  httprequest.open("POST", "./logout.php", true);
+  httprequest.onreadystatechange = function () {
+    if (httprequest.readyState == 4 && httprequest.status == 200) {
+      document.getElementById('bejreg').innerHTML = "<ul id='menu' class='jobbra'><li id='regisztral'  onclick='reg()'>Regisztráció</li><li id='kivagyok'  onclick='bej()'>Bejelentkezés</li></ul>";
+    }
+    zar('kijelentablak');
+  }
   httprequest.send();
 }
 function kuld(cim, mit, hova) {
-    var httprequest = new XMLHttpRequest();
-    httprequest.open("POST", cim, true);
-    httprequest.onreadystatechange = function () {
-        if (httprequest.readyState == 4 && httprequest.status == 200) {
-            document.getElementById(hova).innerHTML = httprequest.responseText;
-        }
+  var httprequest = new XMLHttpRequest();
+  httprequest.open("POST", cim, true);
+  httprequest.onreadystatechange = function () {
+    if (httprequest.readyState == 4 && httprequest.status == 200) {
+      document.getElementById(hova).innerHTML = httprequest.responseText;
     }
-    httprequest.send(mit);
+  }
+  httprequest.send(mit);
 }
 
-function regisztracio(){
-  if (document.getElementById('pass').value == document.getElementById('pass2').value){
-      var formData = new FormData();
-      formData.append('vnev', document.getElementById('vnev').value);
-      formData.append('knev', document.getElementById('knev').value);
-      formData.append('email', document.getElementById('regemail').value);
-      formData.append('pass', document.getElementById('pass').value);
-      formData.append('szuldatum', document.getElementById('szuldatum').value);
-      formData.append('neme', document.getElementById('neme').value);
-      formData.append('magas', document.getElementById('magas').value);
-      kuld("./singin.php", formData, "regisztral");
-      document.getElementById('vnev').value = "";
-      document.getElementById('knev').value = "";
-      document.getElementById('regemail').value = "";
-      document.getElementById('pass').value = "";
-      document.getElementById('pass2').value = "";
-      document.getElementById('szuldatum').value = "";
-      document.getElementById('neme').value = "";
-      document.getElementById('magas').value = "";
-      zar('regisztracio');
+function regisztracio() {
+  if (document.getElementById('pass').value == document.getElementById('pass2').value) {
+    var formData = new FormData();
+    formData.append('vnev', document.getElementById('vnev').value);
+    formData.append('knev', document.getElementById('knev').value);
+    formData.append('email', document.getElementById('regemail').value);
+    formData.append('pass', document.getElementById('pass').value);
+    formData.append('szuldatum', document.getElementById('szuldatum').value);
+    formData.append('neme', document.getElementById('neme').value);
+    formData.append('magas', document.getElementById('magas').value);
+    kuld("./singin.php", formData, "regisztral");
+    document.getElementById('vnev').value = "";
+    document.getElementById('knev').value = "";
+    document.getElementById('regemail').value = "";
+    document.getElementById('pass').value = "";
+    document.getElementById('pass2').value = "";
+    document.getElementById('szuldatum').value = "";
+    document.getElementById('neme').value = "";
+    document.getElementById('magas').value = "";
+    zar('regisztracio');
   } else {
-      alert("Nem egyezik a két jelszó!");
+    alert("Nem egyezik a két jelszó!");
   }
 }
