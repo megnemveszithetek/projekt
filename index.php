@@ -11,6 +11,7 @@ include './csatolt.php';
     <title>Majd kitaláljuk</title>
 </head>
 <body onload="ablakok()" onresize="ablakok()">
+    <div id="container">
     <nav id="bejreg">
         <ul id="menu" class="jobbra">               
             <li id="regisztral"  onclick="reg()">Regisztráció</li>
@@ -89,5 +90,6 @@ include './csatolt.php';
         </div>
     <script src="./js.js" type="text/javascript">
 </script>
+    <div id="container">
 </body>
 </html>
