@@ -1,8 +1,9 @@
 function ablakok() {
   kozepre("bejelentablak");
+  kozepre("jelszocsere");
   kozepre("regisztracio");
   kozepre("kijelentablak");
-  //kozepre("jelszocsere");
+  kozepre("profil");
 }
 
 function kozepre(mit) {
@@ -31,45 +32,63 @@ function bej() {
 }
 
 function megse() {
-  zar("regisztracio")
-  zar("bejelentablak")
-  zar("hibasbej")
+  zar("regisztracio");
+  zar("bejelentablak");
+  zar("hibasbej");
 }
 
 function ellenoriz() {
-  if ((document.getElementById('bejemail').value != "") && (document.getElementById('jelszo').value != "")) {
-    document.getElementById('bejelgomb').disabled = false;
+  if (
+    document.getElementById("bejemail").value != "" &&
+    document.getElementById("jelszo").value != ""
+  ) {
+    document.getElementById("bejelgomb").disabled = false;
   } else {
-    document.getElementById('bejelgomb').disabled = true;
+    document.getElementById("bejelgomb").disabled = true;
   }
 }
 function ellenorzes(mit, mivel, gomb) {
-  if ((document.getElementById(mit).value != "") && (document.getElementById('jelszo').value != "")) {
+  if (
+    document.getElementById(mit).value != "" &&
+    document.getElementById("pass1").value != ""
+  ) {
     document.getElementById(gomb).disabled = false;
   } else {
     document.getElementById(gomb).disabled = true;
   }
 }
+
+function changepassword() {
+  var formData = new FormData();
+  formData.append("oldpass", document.getElementById("oldpass").value);
+  formData.append("pass", document.getElementById("pass1").value);
+  kuld("./changepass.php", formData, "uzenet");
+  document.getElementById("oldpass").value = "";
+  document.getElementById("pass1").value = "";
+  document.getElementById("pass2").value = "";
+  document.getElementById("ujjelszo").disabled = true;
+  zar("jelszocsere");
+}
 function bejelentkezes() {
   var formData = new FormData();
-  formData.append('email', document.getElementById('bejemail').value);
-  formData.append('pass', document.getElementById('jelszo').value);
+  formData.append("email", document.getElementById("bejemail").value);
+  formData.append("pass", document.getElementById("jelszo").value);
   kuld("./login.php", formData, "bejreg");
-  document.getElementById('bejemail').value = "";
-  document.getElementById('jelszo').value = "";
+  document.getElementById("bejemail").value = "";
+  document.getElementById("jelszo").value = "";
   zar("bejelentablak");
   zar("hibasbej");
-
 }
 function kijelentkezes() {
   var httprequest = new XMLHttpRequest();
   httprequest.open("POST", "./logout.php", true);
   httprequest.onreadystatechange = function () {
     if (httprequest.readyState == 4 && httprequest.status == 200) {
-      document.getElementById('bejreg').innerHTML = "<ul id='menu' class='jobbra'><li id='regisztral'  onclick='reg()'>Regisztráció</li><li id='kivagyok'  onclick='bej()'>Bejelentkezés</li></ul>";
+      document.getElementById("bejreg").innerHTML =
+        "<ul id='menu' class='jobbra'><li id='regisztral'  onclick='reg()'>Regisztráció</li><li id='kivagyok'  onclick='bej()'>Bejelentkezés</li></ul>";
     }
-    zar('kijelentablak');
-  }
+    zar("kijelentablak");
+  };
   httprequest.send();
 }
 function kuld(cim, mit, hova) {
@@ -79,30 +98,33 @@ function kuld(cim, mit, hova) {
     if (httprequest.readyState == 4 && httprequest.status == 200) {
       document.getElementById(hova).innerHTML = httprequest.responseText;
     }
-  }
+  };
   httprequest.send(mit);
 }
 
 function regisztracio() {
-  if (document.getElementById('pass').value == document.getElementById('pass2').value) {
+  if (
+    document.getElementById("pass").value ==
+    document.getElementById("pass2").value
+  ) {
     var formData = new FormData();
-    formData.append('vnev', document.getElementById('vnev').value);
-    formData.append('knev', document.getElementById('knev').value);
-    formData.append('email', document.getElementById('regemail').value);
-    formData.append('pass', document.getElementById('pass').value);
-    formData.append('szuldatum', document.getElementById('szuldatum').value);
-    formData.append('neme', document.getElementById('neme').value);
-    formData.append('magas', document.getElementById('magas').value);
+    formData.append("vnev", document.getElementById("vnev").value);
+    formData.append("knev", document.getElementById("knev").value);
+    formData.append("email", document.getElementById("regemail").value);
+    formData.append("pass", document.getElementById("pass").value);
+    formData.append("szuldatum", document.getElementById("szuldatum").value);
+    formData.append("neme", document.getElementById("neme").value);
+    formData.append("magas", document.getElementById("magas").value);
     kuld("./singin.php", formData, "regisztral");
-    document.getElementById('vnev').value = "";
-    document.getElementById('knev').value = "";
-    document.getElementById('regemail').value = "";
-    document.getElementById('pass').value = "";
-    document.getElementById('pass2').value = "";
-    document.getElementById('szuldatum').value = "";
-    document.getElementById('neme').value = "";
-    document.getElementById('magas').value = "";
-    zar('regisztracio');
+    document.getElementById("vnev").value = "";
+    document.getElementById("knev").value = "";
+    document.getElementById("regemail").value = "";
+    document.getElementById("pass").value = "";
+    document.getElementById("pass2").value = "";
+    document.getElementById("szuldatum").value = "";
+    document.getElementById("neme").value = "";
+    document.getElementById("magas").value = "";
+    zar("regisztracio");
   } else {
     alert("Nem egyezik a két jelszó!");
   }

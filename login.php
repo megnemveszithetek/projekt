@@ -17,8 +17,9 @@ if (mysqli_num_rows($eredmeny) == 1){
       <a>".$_SESSION['vnev'].' '.$_SESSION['knev']."</a>
       <ul>
         <li>Profil</li>
-        <li onclick=\"nyit('kijelentablak')\">Kijelentkezés</li>
+        <li onclick=\"nyit('jelszocsere')\">Jelszó váltóztatás</li>
         <li>Sötét mód</li>
+        <li onclick=\"nyit('kijelentablak')\">Kijelentkezés</li>
       </ul>
     </li></ul>";
  

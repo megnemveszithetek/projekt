@@ -11,7 +11,6 @@ include './csatolt.php';
     <title>Majd kitaláljuk</title>
 </head>
 <body onload="ablakok()" onresize="ablakok()">
-    <div id="container">
     <nav id="bejreg">
         <ul id="menu" class="jobbra">               
             <li id="regisztral"  onclick="reg()">Regisztráció</li>
@@ -88,8 +87,48 @@ include './csatolt.php';
              <input type="button" onclick="kijelentkezes()" value="Kilépés">
              <input type="button" value="Mégse" onclick="zar('kijelentablak')">
         </div>
+            <div id="jelszocsere">
+                <table>
+                    <tr>
+                        <td>Régi jelszó:</td>
+                        <td><input type="password" id="oldpass"></td>
+                    </tr>
+                    <tr>
+                        <td>Új jelszó:</td>
+                        <td><input type="password" id="pass1"></td>
+                    </tr>
+                    <tr>
+                        <td>Új jelszó mégegyszer:</td>
+                        <td><input type="password" id="pass2" onchange="ellenorzes('pass1', 'pass2', 'ujjelszo')"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="button" onclick="changepassword()" id="ujjelszo" value="Cserél" disabled>
+                        </td>
+                        <td>
+                            <input type="button" value="Mégse" onclick="zar('jelszocsere')">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div id="uzenet"></div>
+    <div id="profil">
+      <table>
+        <tr>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Vezeték név</td>
+          <td>Keresztnév</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+        </tr>
+      </table>
+    </div>
     <script src="./js.js" type="text/javascript">
 </script>
-    <div id="container">
 </body>
 </html>
