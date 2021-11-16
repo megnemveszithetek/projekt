@@ -38,24 +38,25 @@
   z-index: 3;
 }
 #profil {
-  visibility: visible;
+  visibility: hidden;
   position: absolute;
   z-index: 3;
 }
 html {
-  background-color: #2e2e2e;
-  color: white;
+  background-color: #d1d1d1;
+  font-weight: bold;
+  font-family: sans-serif;
 }
 
 nav li {
   cursor: pointer;
 }
 #regisztral:hover {
-  color: red;
+  color: rgb(46, 46, 46);
   font-weight: bold;
 }
 #kivagyok:hover {
-  color: red;
+  color: rgb(206, 206, 206);
   font-weight: bold;
 }
 nav ul {
@@ -87,4 +88,53 @@ ul li ul li {
 }
 ul li ul li:hover {
   background: #aaa;
+}
+#menu ul li {
+  text-align: center;
+}
+
+.no {
+  display: none;
+}
+
+#kivagyok {
+  background-color: #000361;
+  color: white;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 40px;
+  padding-right: 40px;
+  border-radius: 28px;
+  font-size: 24px;
+}
+
+#kivagyok::after {
+  background-color: #000361;
+  color: white;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 40px;
+  padding-right: 40px;
+  border-radius: 28px;
+  font-size: 24px;
+}
+
+#regisztral {
+  background-color: white;
+  color: white;
+  color: #000361;
+  font-weight: bold;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 45px;
+  padding-right: 45px;
+  border-radius: 28px;
+  font-size: 24px;
+}
+
+h1 {
+  font-size: 40px;
+}
+#ejreg::after {
+  display: none;
 }
