@@ -16,10 +16,10 @@ if (mysqli_num_rows($eredmeny) == 1){
     <li>
       <a>".$_SESSION['vnev'].' '.$_SESSION['knev']."</a>
       <ul>
-        <li onclick=\"nyit('profil')\">Profil</li>
-        <li onclick=\"nyit('jelszocsere')\">Jelszó váltóztatás</li>
+        <li onclick=\"profil()\">Profil</li>
+        <li onclick=\"jelszocsere()\">Jelszó váltóztatás</li>
         <li>Sötét mód</li>
-        <li onclick=\"nyit('kijelentablak')\">Kijelentkezés</li>
+        <li onclick=\"kijelentablak()\">Kijelentkezés</li>
       </ul>
     </li></ul>";
  

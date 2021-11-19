@@ -36,6 +36,21 @@ function megse() {
   zar("bejelentablak");
   zar("hibasbej");
 }
+function profil() {
+  nyit("profil");
+  zar("kijelentablak");
+  zar("jelszocsere");
+}
+function jelszocsere() {
+  nyit("jelszocsere");
+  zar("kijelentablak");
+  zar("profil");
+}
+function kijelentablak() {
+  nyit("kijelentablak");
+  zar("profil");
+  zar("jelszocsere");
+}
 
 function ellenoriz() {
   if (
