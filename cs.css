@@ -32,6 +32,11 @@
   cursor: pointer;
   z-index: 3;
 }
+#users {
+  visibility: hidden;
+  cursor: pointer;
+  z-index: 3;
+}
 #kijelentablak {
   visibility: hidden;
   position: absolute;

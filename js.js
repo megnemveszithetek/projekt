@@ -4,6 +4,7 @@ function ablakok() {
   kozepre("regisztracio");
   kozepre("kijelentablak");
   kozepre("profil");
+  kozepre("users");
 }
 
 function kozepre(mit) {
@@ -40,14 +41,23 @@ function profil() {
   nyit("profil");
   zar("kijelentablak");
   zar("jelszocsere");
+  zar("users");
 }
 function jelszocsere() {
   nyit("jelszocsere");
   zar("kijelentablak");
   zar("profil");
+  zar("users");
 }
 function kijelentablak() {
   nyit("kijelentablak");
+  zar("profil");
+  zar("jelszocsere");
+  zar("users");
+}
+function users() {
+  nyit("users");
+  zar("kijelentablak");
   zar("profil");
   zar("jelszocsere");
 }
