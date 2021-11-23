@@ -9,6 +9,8 @@ include './csatolt.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="cs.css" rel="stylesheet" type="text/css"/>
     <title>Majd kitaláljuk</title>
+    <script src="./js.js" type="text/javascript">
+</script>
 </head>
 <body onload="ablakok()" onresize="ablakok()">
     <nav id="bejreg">
@@ -119,10 +121,7 @@ include './csatolt.php';
                 <table>
                     <tr><th>Vezeték Név</th><th>Kereszt név</th><th>Email cím</th><th>Születési dátum</th><th>Neme</th><th>Magasság</th></tr>
                     <?php
-                        $user="SELECT vnev, knev, email, szuldatum, neme, magassag
-                        FROM felhasznalo
-                        WHERE id=".$_SESSION['id']."";
-                        echo $user;
+                        $user="SELECT vnev, knev, email, szuldatum, neme, magassag FROM felhasznalo WHERE id=".$_SESSION['id'];
                         $eredmeny1=mysqli_query($kapcsolat, $user);
                         while($adatsor1=mysqli_fetch_array($eredmeny1)){
                             echo "<tr><td>".$adatsor1['vnev']."</td><td>".$adatsor1['knev']."</td><td>".$adatsor1['email']."</td><td>".$adatsor1['szuldatum']."</td><td>".$adatsor1['neme']."</td><td>".$adatsor1['magassag']."</td></tr>";
@@ -143,7 +142,5 @@ include './csatolt.php';
                     ?>
                 </table>
             </div>
-    <script src="./js.js" type="text/javascript">
-</script>
 </body>
 </html>

@@ -36,6 +36,8 @@
   visibility: hidden;
   cursor: pointer;
   z-index: 3;
+  background-color: darkslateblue;
+  width: 50%;
 }
 #kijelentablak {
   visibility: hidden;

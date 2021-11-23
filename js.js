@@ -57,6 +57,7 @@ function kijelentablak() {
 }
 function users() {
   nyit("users");
+  ablakok();
   zar("kijelentablak");
   zar("profil");
   zar("jelszocsere");
