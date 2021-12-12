@@ -36,8 +36,6 @@
   visibility: hidden;
   cursor: pointer;
   z-index: 3;
-  background-color: darkslateblue;
-  width: 50%;
 }
 #kijelentablak {
   visibility: hidden;
@@ -145,3 +143,6 @@ h1 {
 #ejreg::after {
   display: none;
 }
+/* {
+  border: 1px solid rgb(255, 0, 0);
+}*/

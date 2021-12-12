@@ -10,6 +10,9 @@ if (session_status()==PHP_SESSION_NONE){
     if (!isset($_SESSION['knev'])){
         $_SESSION['knev']="";
     }
+    if (!isset($_SESSION['jog'])){
+        $_SESSION['jog']=0;
+    }
 }
     $server="localhost";
     $user="root";
