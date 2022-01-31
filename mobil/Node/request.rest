@@ -1,0 +1,15 @@
+GET http://localhost:3000/login
+
+###
+POST http://localhost:3000/register
+Content-Type: application/json
+
+{
+    "vnev" : "qwe",
+    "knev" : "qwe",
+    "email" : "qwe",
+    "pass" : "qwe",
+    "szuldatum" : "2001-01-05",
+    "neme" : "1",
+    "magassag" : "124"
+}
