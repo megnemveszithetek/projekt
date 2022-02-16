@@ -5,10 +5,10 @@ POST http://localhost:3000/register
 Content-Type: application/json
 
 {
-    "vnev" : "qwe",
-    "knev" : "qwe",
-    "email" : "qwe",
-    "pass" : "qwe",
+    "vnev" : "asd",
+    "knev" : "asd",
+    "email" : "asd",
+    "pass" : "asd",
     "szuldatum" : "2001-01-05",
     "neme" : "1",
     "magassag" : "124"
