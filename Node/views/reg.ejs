@@ -1,0 +1,34 @@
+<h1>Regisztráció</h1>
+<form action="/register" method="POST">
+    <div>
+        <label for="vnev">Vezeték név: </label>
+        <input type="text" id="vnev" name="vnev" required>
+    </div>
+    <div>
+        <label for="knev">Kereszt név: </label>
+        <input type="text" id="knev" name="knev" required>
+    </div>
+    <div>
+        <label for="email">E-mail cím: </label>
+        <input type="email" id="email" name="email" required>
+    </div>
+    <div>
+        <label for="pass">Jelszó: </label>
+        <input type="password" id="pass" name="pass" required>
+    </div>
+    <div>
+        <label for="szuldate">születés dátum: </label>
+        <input type="date" id="szuldate" name="szuldate" required>
+    </div>
+    <div>
+        <tr>
+            <td>Neme: </td>
+            <td><select id="neme">
+                    <option value="0" selected>Nő</option>
+                    <option value="1">Férfi</option>
+                </select></td>
+        </tr>
+    </div>
+    <button type="submit">Regisztráció</button>
+</form>
+<a href="/login">Belépés</a>

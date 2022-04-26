@@ -1,15 +1,26 @@
-GET http://localhost:3000/login
+GET http://localhost:3000/Users
 
 ###
 POST http://localhost:3000/register
 Content-Type: application/json
 
+{ "vnev": "yxc",
+  "knev": "yxc",
+  "email": "yxc",
+  "pass": "yxc",
+  "szuldatum": "1999-12-31T23:00:00Z",
+  "neme": 0,
+  "magassag": 143,
+  "diet": [    ""  ],
+  "goal": "weightloss",
+  "permission": "user",
+  "trainingplan": []
+  }
+
+###
+GET http://localhost:3000/login
+Content-Type: application/json
+
 {
-    "vnev" : "asd",
-    "knev" : "asd",
-    "email" : "asd",
-    "pass" : "asd",
-    "szuldatum" : "2001-01-05",
-    "neme" : "1",
-    "magassag" : "124"
+    "email": "yxc"
 }
