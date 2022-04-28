@@ -20,7 +20,7 @@ app.use(passport.session());
 app.set('view-engine', 'ejs');
 app.use(cors());
 app.use(express.json({ extended: true }));
-app.listen(3000, () => { console.log("A szerver fut") });
+app.listen(4000, () => { console.log("A szerver fut") });
 
 
 function getClient() {
@@ -28,7 +28,7 @@ function getClient() {
     return new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 }
 const client = getClient();
-initializePassport(passport, client);
+//initializePassport(passport, client);
 const bodyParser = require("body-parser");
 
 
@@ -46,7 +46,7 @@ function checkNotAuth(req, res, next) {
 }
 
 app.get('/', checkAuth, (req, res) => {
-    res.render('index.ejs', { username: req.user.username });
+    res.render('index.ejs', { email: req.user.email });
 });
 
 app.get('/vedett', checkAuth, (req, res) => {
@@ -61,14 +61,47 @@ app.get('/login', checkNotAuth, (req, res) => {
     res.render('login.ejs');
 });
 
+app.use(
+    session({
+        key: "userId",
+        secret: "secret",
+        resave: false,
+        saveUninitialized: false,
+        cookie: {
+            maxAge: 1000 * 60 * 30
+        },
+    })
+);
 
-app.get('/users', (req, res) => {
-    client.connect(async (err) => {
-        const collection = client.db("FitnessApp").collection("Users");
-        // perform actions on the collection object
-        const users = await collection.find().toArray();
-        res.send(users);
-        client.close();
+app.post('/login', async (req, res) => {
+    const email = req.body.email;
+    const pass = req.body.pass;
+    const client = getClient();
+    client.connect(function (err, db) {
+        if (err) throw err;
+        var dbo = db.db("FitnessApp");
+        var query = { email: email };
+        dbo.collection("Users").find(query).toArray(function (err, result) {
+            if (err) throw err;
+            if (result == "") {
+                res.send("Nincs ilyen felhasználó");
+            } else {
+                bcrypt.compare(pass, result[0].pass, function (err, isValidPass) {
+                    if (isValidPass == true) {
+                        res.send("Sikeres bejelentkezes")
+                        client.connect(async (err) => {
+                            const collection = client.db("FitnessApp").collection("Users");
+                            const user = await collection.find({ email: req.body.email }).toArray();
+                            req.session.user = result;
+                        });
+                    } else {
+                        res.send("Sikertelen bejelentkezes")
+                    }
+                })
+            }
+
+            db.close();
+        });
     });
 });
 
@@ -103,36 +136,4 @@ app.post('/register', bodyParser.json(), async (req, res) => {
     } catch (error) {
         console.log(error);
     }
-});
-
-
-
-// app.get('/login', bodyParser.json(), async (req, res) => {
-//     const client = getClient();
-//     client.connect(async (err) => {
-//         const collection = client.db("FitnessApp").collection("Users");
-//         const user = await collection.find({ email: req.body.email }).toArray();
-//         res.send(user);
-
-//         client.close();
-//     });
-// });
-
-app.post('/login', checkNotAuth, passport.authenticate('local', {
-    successRedirect: '/',
-    failureRedirect: '/login',
-    failureFlash: true
-}));
-
-
-
-app.get('/user/:email', (req, res) => {
-    client.connect(async (err) => {
-        const collection = client.db("FitnessApp").collection("Users");
-        // perform actions on the collection object
-        const user = await collection.find({ email: req.params.email }).toArray();
-        res.send(user.pass);
-        
-        client.close();
-    });
 });
