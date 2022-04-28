@@ -9,9 +9,9 @@ function About() {
                     <div className="mt-lg-5 mb-lg-0 mb-4 col-lg-5 col-md-10 mx-auto col-12">
                         <h2 className="mb-4" data-aos="fade-up" data-aos-delay="300">Rólunk</h2>
 
-                        <p data-aos="fade-up" data-aos-delay="400">Ide</p>
+                        <p data-aos="fade-up" data-aos-delay="400">A Lajhár KFT. bármikor elérhető a project.nembukunkmeg@gmail.com email címen.</p>
 
-                        <p data-aos="fade-up" data-aos-delay="500">írjatok valamit köszihelo</p>
+                        <p data-aos="fade-up" data-aos-delay="500">A csapat további tagja Besenyei János designer is.</p>
 
                     </div>
 
