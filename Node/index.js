@@ -7,6 +7,10 @@ const { MongoClient, ServerApiVersion } = require('mongodb');
 const passport = require('passport');
 const session = require('express-session');
 const flash = require('express-flash');
+const request = require('request');
+const cookieParser = require("cookie-parser");
+const NodeCache = require('node-cache');
+app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(flash());
@@ -27,9 +31,6 @@ function getClient() {
     const uri = "mongodb+srv://asd:asd@fitnessapp.bn3xz.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
     return new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 }
-const client = getClient();
-//initializePassport(passport, client);
-const bodyParser = require("body-parser");
 
 
 function checkAuth(req, res, next) {
@@ -61,6 +62,7 @@ app.get('/login', checkNotAuth, (req, res) => {
     res.render('login.ejs');
 });
 
+const oneDay = 1000 * 60 * 60 * 24;
 app.use(
     session({
         key: "userId",
@@ -68,10 +70,13 @@ app.use(
         resave: false,
         saveUninitialized: false,
         cookie: {
-            maxAge: 1000 * 60 * 30
-        },
+            maxAge: oneDay
+        }
     })
 );
+const myCache = new NodeCache({ stdTTL: 3600 });
+
+
 
 app.post('/login', async (req, res) => {
     const email = req.body.email;
@@ -92,8 +97,12 @@ app.post('/login', async (req, res) => {
                         client.connect(async (err) => {
                             const collection = client.db("FitnessApp").collection("Users");
                             const user = await collection.find({ email: req.body.email }).toArray();
-                            req.session.user = result;
+                            console.log(req.body.email);
+                            const email = req.body.email;
+                            myCache.mset({ email });
+                            console.log(myCache);
                         });
+
                     } else {
                         res.send("Sikertelen bejelentkezes")
                     }
@@ -105,7 +114,16 @@ app.post('/login', async (req, res) => {
     });
 });
 
-app.post('/register', bodyParser.json(), async (req, res) => {
+app.get('/admin', (req, res) => {
+    if (req.session) {
+        console.log(req.session);
+    } else {
+        console.log("nincs kuki")
+    }
+
+});
+
+app.post('/register', async (req, res) => {
     try {
         const secretPass = await bcrypt.hash(req.body.pass, 10);
         const newUser = {
@@ -113,9 +131,10 @@ app.post('/register', bodyParser.json(), async (req, res) => {
             knev: req.body.knev,
             email: req.body.email,
             pass: secretPass,
-            szuldatum: req.body.szuldatum,
+            szuldatum: req.body.szuldate,
             neme: req.body.neme,
-            magassag: '',
+            height: '',
+            weight: [],
             diet: [],
             goal: '',
             permission: "user",
@@ -136,4 +155,117 @@ app.post('/register', bodyParser.json(), async (req, res) => {
     } catch (error) {
         console.log(error);
     }
+});
+
+app.get('/bmi', checkNotAuth, (req, res) => {
+    console.log(req.session);
+    res.send(req.session);
+    res.render('bmi.ejs');
+});
+
+app.post('/bmi', async (req, res) => {
+    // const client = getClient();
+    // client.connect(async (err) => {
+    //     const collection = client.db("FitnessApp").collection("Users");
+    //     const user = await collection.Find(req.session);
+    //     const age = Date.now() - user.szuldatum;
+    //     console.log(age)
+    // });
+    console.log(req.session);
+    res.send(req.session.user.szuldatum);
+    const options = {
+        method: 'GET',
+        url: 'https://fitness-calculator.p.rapidapi.com/bmi',
+        qs: { age: req.body.age, weight: req.body.weight, height: req.body.height },
+        headers: {
+            'X-RapidAPI-Host': 'fitness-calculator.p.rapidapi.com',
+            'X-RapidAPI-Key': '4f7ec25b8dmsh664fdddf3cc4417p163fb0jsn3c165733c8fa',
+            useQueryString: true
+        }
+    };
+
+    request(options, function (error, response, body) {
+        if (error) throw new Error(error);
+        res.send(body);
+        console.log(body);
+    });
+});
+
+app.get('/calorie', checkNotAuth, (req, res) => {
+    res.render('calorie.ejs');
+});
+
+
+app.post('/calorie', async (req, res) => {
+    const options = {
+        method: 'GET',
+        url: 'https://calorieninjas.p.rapidapi.com/v1/nutrition',
+        qs: { query: req.body.etel },
+        headers: {
+            'X-RapidAPI-Host': 'calorieninjas.p.rapidapi.com',
+            'X-RapidAPI-Key': '6642b87dd1mshab0be50d3032e18p104816jsn9d41651da248',
+            useQueryString: true
+        }
+    };
+
+    request(options, function (error, response, body) {
+        if (error) throw new Error(error);
+        res.send(body);
+    });
+});
+app.get('/recipe', checkNotAuth, (req, res) => {
+    res.render('recipe.ejs');
+});
+
+
+app.post('/recipe', async (req, res) => {
+
+    const options = {
+        method: 'GET',
+        url: 'https://edamam-recipe-search.p.rapidapi.com/search',
+        qs: { q: req.body.recipe },
+        headers: {
+            'X-RapidAPI-Host': 'edamam-recipe-search.p.rapidapi.com',
+            'X-RapidAPI-Key': '6642b87dd1mshab0be50d3032e18p104816jsn9d41651da248',
+            useQueryString: true
+        }
+    };
+
+    request(options, function (error, response, body) {
+        if (error) throw new Error(error);
+        res.send(body);
+    });
+});
+
+app.get('/Body-Fat-Percentage', checkNotAuth, (req, res) => {
+    res.render('Body-Fat-Percentage.ejs');
+});
+
+
+app.post('/Body-Fat-Percentage', async (req, res) => {
+
+    const options = {
+        method: 'GET',
+        url: 'https://fitness-calculator.p.rapidapi.com/bodyfat',
+        qs: {
+            age: '25',
+            gender: 'male',
+            weight: '70',
+            height: '178',
+            neck: '50',
+            waist: '96',
+            hip: '92'
+        },
+        headers: {
+            'X-RapidAPI-Host': 'fitness-calculator.p.rapidapi.com',
+            'X-RapidAPI-Key': '4f7ec25b8dmsh664fdddf3cc4417p163fb0jsn3c165733c8fa',
+            useQueryString: true
+        }
+    };
+
+    request(options, function (error, response, body) {
+        if (error) throw new Error(error);
+
+        console.log(body);
+    });
 });
