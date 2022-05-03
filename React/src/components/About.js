@@ -45,12 +45,12 @@ function About() {
 
                     <div className="mr-lg-auto mt-5 mt-lg-0 mt-md-0 col-lg-3 col-md-2 col" data-aos="fade-up" data-aos-delay="900">
                         <div className="team-thumb">
-                            <img src="images/team/adam.jpg" className="img-fluid" alt="programer" />
+                            <img src="images/team/janos.jpg" className="img-fluid" alt="programer" />
 
                             <div className="team-info d-flex flex-column">
 
                                 <h3>Besenyei János</h3>
-                                <h4>Programozó</h4>
+                                <h4>Frontend</h4>
 
 
                             </div>

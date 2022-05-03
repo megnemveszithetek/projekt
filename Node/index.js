@@ -243,18 +243,26 @@ app.get('/Body-Fat-Percentage', checkNotAuth, (req, res) => {
 
 
 app.post('/Body-Fat-Percentage', async (req, res) => {
-
+    console.log(
+        req.body.age,
+        req.body.gender,
+        req.body.weight,
+        req.body.height,
+        req.body.neck,
+        req.body.waist,
+        req.body.hip
+    )
     const options = {
         method: 'GET',
         url: 'https://fitness-calculator.p.rapidapi.com/bodyfat',
         qs: {
-            age: '25',
-            gender: 'male',
-            weight: '70',
-            height: '178',
-            neck: '50',
-            waist: '96',
-            hip: '92'
+            age: req.body.age,
+            gender: req.body.gender,
+            weight: req.body.weight,
+            height: req.body.height,
+            neck: req.body.neck,
+            waist: req.body.waist,
+            hip: req.body.hip
         },
         headers: {
             'X-RapidAPI-Host': 'fitness-calculator.p.rapidapi.com',
@@ -265,7 +273,7 @@ app.post('/Body-Fat-Percentage', async (req, res) => {
 
     request(options, function (error, response, body) {
         if (error) throw new Error(error);
-
+        res.send(body);
         console.log(body);
     });
 });

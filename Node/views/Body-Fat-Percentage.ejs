@@ -2,39 +2,33 @@
 <form action="/Body-Fat-Percentage" method="POST">
 
     <div>
-        <label for="recipe">Kor: </label>
-        <input type="text" id="recipe" name="recipe" placeholder=" pl.: chicken" required>
+        <label for="age">Kor: </label>
+        <input type="number" id="age" name="age" required>
     </div>
     <div>
-        <tr>
-            <td>Neme: </td>
-            <td>
-                <select id="neme">
-                    <option value="female" selected>Nő</option>
-                    <option value="male">Férfi</option>
-                </select>
-            </td>
-        </tr>
+        <label for="gender">Neme: </label>
+        <input type="text" id="gender" name="gender" placeholder="male or female" required>
     </div>
     <div>
-        <label for="recipe">Súlya: </label>
-        <input type="text" id="recipe" name="recipe" placeholder=" pl.: chicken" required>
+        <label for="weight">Súlya: </label>
+        <input type="number" id="weight" name="weight" required>
     </div>
     <div>
-        <label for="recipe">Magassága: </label>
-        <input type="text" id="recipe" name="recipe" placeholder=" pl.: chicken" required>
+        <label for="height">Magassága: </label>
+        <input type="number" id="height" name="height" required>
     </div>
     <div>
-        <label for="recipe">Nyak(kerület cm-ben): </label>
-        <input type="text" id="recipe" name="recipe" placeholder=" pl.: chicken" required>
+        <label for="neck">Nyak(kerület cm-ben): </label>
+        <input type="number" id="neck" name="neck" required>
     </div>
     <div>
-        <label for="recipe">Derék(kerület cm-ben): </label>
-        <input type="text" id="recipe" name="recipe" placeholder=" pl.: chicken" required>
+        <label for="waist">Derék(kerület cm-ben): </label>
+        <input type="number" id="waist" name="waist" required>
     </div>
     <div>
-        <label for="recipe">Csípő(kerület cm-ben): </label>
-        <input type="text" id="recipe" name="recipe" placeholder=" pl.: chicken" required>
+        <label for="hip">Csípő(kerület cm-ben): </label>
+        <input type="number" id="hip" name="hip" required>
     </div>
     <button type="submit">Küldés</button>
+
 </form>
